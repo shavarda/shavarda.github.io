@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app='myApp'>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+</head>
+<body ng-controller="QuestionController">
+    <div>
+        <div class="quest">
+            <h3>{{question.text}}</h3>
+            <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
+        </div>
+        <p>Введите ответчика: <input type="text" ng-model="member"></p>
+        <h3>Ответы</h3>
+        <div class="answers">
+            <div ng-repeat="a in question.answers | filter:{author:member}" class="answer" >
+                <div class="vote">
+                    <a class="vote-up" ng-click="voteUp(a)"></a>
+                    <span class="rate">{{a.rate}}</span>
+                    <a class="vote-down" ng-click="voteDown(a)"></a>
+                </div>
+                <b>{{a.text}}</b>
+                <p>{{a.author}}</p>
+                <p><i>{{a.date}}</i></p>
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        var myApp=angular.module('myApp', []);
+        myApp.controller('QuestionController', function($scope) {
+
+          $scope.sortparam='rate';
+          $scope.question={
+                text: 'Какой js-фреймворк лучше использовать?',
+                author: 'Иван Иванов',
+                date: '20/10/2013',
+                answers:[{
+                    text: 'AngularJS!',
+                    author: 'Вова Сидоров',
+                    date: '20/10/2013',
+                    rate:2
+                },{
+                    text: 'AngularJS лучше всех',
+                    author: 'Олег Кузнецов',
+                    date: '20/10/2013',
+                    rate:0
+                },{
+                    text: 'Я бы использовал knockout',
+                    author: 'Неизвестный',
+                    date: '21/10/2013',
+                    rate:0
+                }]
+            };
+            $scope.voteUp = function (answer){
+                answer.rate++;
+            };
+            $scope.voteDown = function (answer){
+                answer.rate--;
+            };
+        });
+    </script>
+</body>
+</html>
