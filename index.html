@@ -1,65 +1,191 @@
-<!doctype html>
-<html ng-app='myApp'>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-</head>
-<body ng-controller="QuestionController">
-    <div>
-        <div class="quest">
-            <h3>{{question.text}}</h3>
-            <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
-        </div>
-        <p>Введите ответчика: <input type="text" ng-model="member"></p>
-        <h3>Ответы</h3>
-        <div class="answers">
-            <div ng-repeat="a in question.answers | filter:{author:member}" class="answer" >
-                <div class="vote">
-                    <a class="vote-up" ng-click="voteUp(a)"></a>
-                    <span class="rate">{{a.rate}}</span>
-                    <a class="vote-down" ng-click="voteDown(a)"></a>
-                </div>
-                <b>{{a.text}}</b>
-                <p>{{a.author}}</p>
-                <p><i>{{a.date}}</i></p>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Andata</title>
+  <link href="./css/style.css?30de7e46ee97c93de6ed" rel="stylesheet"></head>
+  <body>
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 col-md-4"><a class="header__title" href="#">
+          <div class="header__title-name">Andata</div>digital passport</a></div>
+      <div class="header__nav col-2 col-md-8">
+        <nav>
+          <div class="nav__btn"></div>
+          <div class="nav__elems"><a class="nav__elem" href="#">О нас</a><a class="nav__elem" href="#">Контакты</a><a class="nav__elem" href="#">30-days trial</a><a class="nav__elem" href="#">Войти</a>
+          </div>
+        </nav>
+      </div>
     </div>
- 
-    <script>
-        var myApp=angular.module('myApp', []);
-        myApp.controller('QuestionController', function($scope) {
-
-          $scope.sortparam='rate';
-          $scope.question={
-                text: 'Какой js-фреймворк лучше использовать?',
-                author: 'Иван Иванов',
-                date: '20/10/2013',
-                answers:[{
-                    text: 'AngularJS!',
-                    author: 'Вова Сидоров',
-                    date: '20/10/2013',
-                    rate:2
-                },{
-                    text: 'AngularJS лучше всех',
-                    author: 'Олег Кузнецов',
-                    date: '20/10/2013',
-                    rate:0
-                },{
-                    text: 'Я бы использовал knockout',
-                    author: 'Неизвестный',
-                    date: '21/10/2013',
-                    rate:0
-                }]
-            };
-            $scope.voteUp = function (answer){
-                answer.rate++;
-            };
-            $scope.voteDown = function (answer){
-                answer.rate--;
-            };
-        });
-    </script>
-</body>
+  </div>
+</header>
+<div class="info">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="info__content">
+          <div class="info__title">Цифровой<br>паспорт &mdash;</div>
+          <div class="info__text">новая эра
+            <div class="info__text-decoration">чистой<br></div>метрики и данных
+          </div>
+          <div class="info__link"><a class="link" href="#">Подключить</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="work">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="work__title">
+          Как это работает
+          
+        </div>
+        <div class="work__elems">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">1</div>
+                  <div class="work__elem-title">Трекинг</div>
+                </div>
+                <div class="work__elem-categoria">Cookie + SuperCookie + Fingerprints + 10к parameters</div>
+                <div class="work__elem-text">Сбор данных с сайтов, мобильных приложений, рекламных кабинетов / crm / erp систем заказчика</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">2</div>
+                  <div class="work__elem-title">Персонализация</div>
+                </div>
+                <div class="work__elem-categoria">Machine learning</div>
+                <div class="work__elem-text">Индивидуальная настройка Цифрового паспорта посетителя сайта под бизнес</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">3</div>
+                  <div class="work__elem-title">Подготовка данных</div>
+                </div>
+                <div class="work__elem-categoria">Big Data</div>
+                <div class="work__elem-text">Нормализация и стандартизация собранных данных</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">4</div>
+                  <div class="work__elem-title">Дедупликация</div>
+                </div>
+                <div class="work__elem-categoria">Machine learning + Neural network</div>
+                <div class="work__elem-text">Выявление и удаление дублей посетителей</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">5</div>
+                  <div class="work__elem-title">Сегментация</div>
+                </div>
+                <div class="work__elem-categoria">Machine learning</div>
+                <div class="work__elem-text">Построение сегментов посетителей</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="work__elem">
+                <div class="work__elem-main">
+                  <div class="work__elem-number">6</div>
+                  <div class="work__elem-title">Применение</div>
+                </div>
+                <div class="work__elem-categoria">Machine learning</div>
+                <div class="work__elem-text">Управление рекламными кампаниями на основании сегментов</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6"><img class="work__img" src="img/work.png"></div>
+      <div class="col-12 col-md-6">
+        <div class="work__content"><b>Цифровой паспорт</b> – автоматически обновляющийся информационно-аналитический профиль посетителя сайта, состоящий из тысяч параметров</div>
+        <div class="work__link"><a class="link" href="#">Подключить</a>30 дней бесплатно</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="example">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="example__title">Пример использования<br>цифрового паспорта</div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="example__img"><img src="img/example/phone.png"></div>
+        <div class="example__text">Утром, <b>со смартфона</b> покупатель узнает о новом товаре и переходит по рекламе Google</div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="example__img example__img-computer"><img src="img/example/computer.png"></div>
+        <div class="example__text">В обед, <b>с рабочего компьютера</b> переходит по рекламе Yandex, чтобы изучить товар</div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="example__img example__img-tab"><img src="img/example/tab.png"></div>
+        <div class="example__text">Вечером дома, <b>с планшета</b> сразу заходит на сайт и совершает покупку</div>
+      </div>
+      <div class="col-12 col-md-6 example__content">
+        <div class="example__img example__img-analyst"><img src="img/example/analyst.png"></div>
+        <div class="example__name">Что покажут<br>системы аналитики</div>
+        <div class="example__elems example__elems-analyst">
+          <div class="example__text">Было 3 уникальных посетителя на сайте</div>
+          <div class="example__text">2 посетителя перешли из рекламы</div>
+          <div class="example__text">1 посетитель зашел сразу на сайт и купил</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 example__content">
+        <div class="example__img example__img-passport"><img src="img/example/passport.png"></div>
+        <div class="example__name">Что покажет<br>Цифровой паспорт</div>
+        <div class="example__elems example__elems-passport">
+          <div class="example__text">Был 1 уникальный посетитель на сайте</div>
+          <div class="example__text">2 раза он перешел из рекламы</div>
+          <div class="example__text">Купил перейдя сразу на сайт</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="connect">
+  <div class="container">
+    <div class="row connect__content">
+      <div class="col-12 offset-md-4 col-md-8">
+        <div class="connect__text">Существующие системы аналитики не позволяют отследить и объединить действия пользователя с разных устройств, каналов и браузеров.</div>
+        <div class="connect__text"><b>Цифровой паспорт решает эту задачу!</b></div>
+        <div class="connect__link"><a class="link" href="#">Подключить</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cost">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="cost__title">Стоимость</div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="cost__money">1  / месяц<br>за каждый цифровой паспорт,<br>который создан или дополнен</div><img class="cost__img" src="/">
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="cost__text-title">Пример расчета</div>
+        <div class="cost__text">Посещаемость сайта <a href="#">согласно вашей аналитике</a> <b>100 000</b> уникальных посетителей в месяц</div>
+        <div class="cost__text">Система <a href="#">Andata</a> объединла и выявила <b>50 000</b> уникальных цифровых паспортов</div>
+        <div class="cost__text"><b>Итоговая цена — 50 000 ₽ за месяц</b></div>
+        <div class="cost__text">*Минимальная стоимость услуги — 30 000 ₽ в месяц за каждый вэб-сайт.</div>
+        <div class="cost__link"><a class="link" href="#">Подключить</a>30 дней бесплатно</div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript" src="./js/bundle.js?30de7e46ee97c93de6ed"></script></body>
 </html>
